@@ -1,0 +1,6 @@
+{
+  "name": "FOOD O'CLOCK",
+  "description": "IT'S ALWAYS FOOD O'CLOCK. Your cravings have a schedule — Gen Z smash burgers, sourdough pizza, loaded fries, and late-night combos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   FOOD O'CLOCK — DESIGN TOKENS (CSS VARIABLES)
+   Edit colors, typography, and spacing tokens here to restyle the whole site.
+   ========================================================================== */
+:root {
+  /* Core Brand Palette */
+  --fo-orange: #FF5A1F;
+  --fo-orange-hover: #E64810;
+  --fo-cream: #FFF3E0;
+  --fo-cream-soft: #FFF8ED;
+  --fo-charcoal: #202020;
+  --fo-charcoal-elevated: #2A2A2A;
+  --fo-lime: #C6F235;
+  --fo-lime-hover: #B5E124;
+
+  /* Semantic Surface & Text Tokens */
+  --fo-bg: var(--fo-cream);
+  --fo-surface: #FFFFFF;
+  --fo-surface-muted: #F7E8D0;
+  --fo-text: var(--fo-charcoal);
+  --fo-text-muted: #57524C;
+  --fo-border: rgba(32, 32, 32, 0.14);
+  --fo-border-strong: rgba(32, 32, 32, 0.85);
+
+  /* Typography */
+  --font-display: "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Motion */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--fo-bg);
+    color: var(--fo-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--fo-bg);
+    color: var(--fo-text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--fo-orange);
+    outline-offset: 2px;
+  }
+}
+
+/* Marquee Ticker Animation */
+@keyframes fo-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.fo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: fo-marquee 28s linear infinite;
+}
+
+.fo-marquee-wrapper:hover .fo-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fo-marquee-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
